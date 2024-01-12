@@ -2,18 +2,18 @@
 	--commandments-color: hsl(0, 0%, 0%);
 
 	/* header */
-	--header-bg: #94B17E;
+	--header-bg: #68a33a;
 
 	/* section */
-	--section: #94B17E;
-	--section-even: #94B17E;
+	--section: #68a33a;
+	--section-even: #68a33a;
 
 	/* tiles */
-	--red: #45f78f;
+	--red: #799183;
 	--green: #03E1FF;
 	--blue: #03E1FF;
 	--purple: #DC1FFF;
-	--yellow: hsl(0, 100%, 73%);
+	--yellow: hsl(0, 61%, 50%);
 	--black: hsl(0 0% 0%);
 
 	/*  */
@@ -22,6 +22,19 @@
 
 * {
 	box-sizing: border-box;
+}
+
+button {
+	color: rgb(180, 6, 6);
+	background: none;
+	border: none;
+	font-family: "Righteous", sans-serif;
+	font-size: 25px;
+	animation: scaleUpDown 4s ease-in-out infinite;
+}
+
+button:hover {
+	cursor: pointer;
 }
 
 html {
@@ -35,10 +48,10 @@ body {
 	font-family: "Righteous", sans-serif;
 
 	/* scope */
-	timeline-scope: 
-		--pepegods-s, 
-		--tiles-s, 
-		--commandments-s, 
+	timeline-scope:
+		--pepegods-s,
+		--tiles-s,
+		--commandments-s,
 		--manifesto-s,
 		--subscribe-s;
 }
@@ -74,8 +87,8 @@ header {
 
 		.burger {
 			display: var(--show);
-      background-color: var(--header-bg);
-			
+			background-color: var(--header-bg);
+
 			& path {
 				fill: none;
 				stroke: currentcolor;
@@ -160,7 +173,7 @@ header {
 	}
 }
 
-@media (width <= 48rem) {
+@media (width <=48rem) {
 	body {
 		&:has(input[id="burger"]:checked) {
 			scrollbar-gutter: stable;
@@ -192,7 +205,7 @@ header {
 
 		& .menu {
 			&:has(input[type="checkbox"]:checked) {
-				& ~ nav {
+				&~nav {
 					--translateY: 0;
 				}
 			}
@@ -240,19 +253,14 @@ section {
 .flying-squares {
 	position: absolute;
 	z-index: 1;
-	
+	animation: fadeIn 1s ease-in;
 	.square {
 		position: inherit;
 		width: 15vw;
 		height: 15vw;
-		rotate: 0.4turn;
-		background-color: var(--square-color);
 		top: var(--y);
 		left: var(--x);
-		opacity: 0.3;
-		rotate:  var(--rx) var(--ry) var(--rz) 0.55turn;
-		animation: flying 2s infinite alternate both;
-		
+		animation: bounce 1s ease-in-out infinite;
 		&:nth-of-type(1) {
 			--y: 17vh;
 			--x: 8vw;
@@ -260,10 +268,10 @@ section {
 			--ry: 2.1;
 			--rz: 1.6;
 			--square-color: var(--red);
-			
+
 			animation-delay: 1s;
 		}
-		
+
 		&:nth-of-type(2) {
 			--y: 8vh;
 			--x: 76vw;
@@ -272,7 +280,7 @@ section {
 			--rz: 2.1;
 			--square-color: var(--purple);
 		}
-		
+
 		&:nth-of-type(3) {
 			--y: 60vh;
 			--x: 40vw;
@@ -280,16 +288,46 @@ section {
 			--ry: 3.5;
 			--rz: 2.7;
 			--square-color: var(--green);
-			
+
 			animation-delay: 0.5s;
 		}
 	}
 }
 
-@keyframes flying {
-	to {
-		translate: 0 -5vh;
-	}
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes scaleUpDown {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.5);
+    }
 }
 
 .pepegods {
@@ -407,7 +445,7 @@ section {
 	padding: 3rem 1rem;
 	counter-reset: chapter 0;
 
-	& > *:not(h2) {
+	&>*:not(h2) {
 		text-wrap: pretty;
 		counter-increment: chapter 1;
 
@@ -416,7 +454,8 @@ section {
 		animation-timeline: view(y 80vh auto);
 
 		&::before {
-			content: counter(chapter, upper-roman) ". "; /* lower-alpha */
+			content: counter(chapter, upper-roman) ". ";
+			/* lower-alpha */
 		}
 	}
 }
@@ -456,14 +495,12 @@ section {
 	white-space: nowrap;
 	padding-block: 0.125rem;
 	padding-inline-end: 0.5rem;
-	background-image: linear-gradient(
-		0.25turn,
-		var(--red),
-		var(--yellow),
-		var(--green),
-		var(--blue),
-		var(--purple)
-	);
+	background-image: linear-gradient(0.25turn,
+			var(--red),
+			var(--yellow),
+			var(--green),
+			var(--blue),
+			var(--purple));
 	opacity: 0;
 	transition: opacity 200ms linear;
 
@@ -518,16 +555,16 @@ section {
 				/* animation */
 				animation: show both linear;
 				animation-timeline: var(--name);
-				animation-range:  entry-crossing var(--range-start);
-				
+				animation-range: entry-crossing var(--range-start);
+
 				&:nth-of-type(1) {
 					--range-start: 10%;
 				}
-				
+
 				&:nth-of-type(2) {
 					--range-start: 40%;
 				}
-				
+
 				&:nth-of-type(3) {
 					--range-start: 70%;
 				}
@@ -561,19 +598,18 @@ section {
 	.preview {
 		position: relative;
 		margin-block: 2rem;
-		block-size: calc(100% - 1rem);
+		block-size: calc(100% - 0rem);
 
 		.img {
 			left: var(--translateX);
 			block-size: inherit;
 			min-block-size: 24rem;
 			object-fit: cover;
-			background: var(--red);
 		}
 	}
 }
 
-@media (width >= 48rem) {
+@media (width >=48rem) {
 	.manifesto {
 		--columns: 2;
 		--translateX: 150%;
@@ -603,7 +639,7 @@ section {
 	from {
 		opacity: 0;
 	}
-	
+
 	to {
 		opacity: 1;
 	}
@@ -625,7 +661,7 @@ section {
 		/* animation */
 		animation: slide-up both linear;
 		animation-timeline: var(--name);
-		animation-range:  entry-crossing 40%;
+		animation-range: entry-crossing 40%;
 
 		& input {
 			inline-size: 100%;
@@ -635,7 +671,7 @@ section {
 			padding-inline: 0.5rem;
 			font-size: calc(1rem + 0.25vw);
 			box-shadow: 0 0 0.125rem var(--commandments-color);
-			
+
 			&:focus {
 				outline: thin solid var(--purple);
 			}
@@ -647,11 +683,11 @@ section {
 			cursor: pointer;
 			background-color: var(--purple);
 			border: 0;
-			
+
 			&:focus {
 				outline: thin solid var(--purple);
 			}
-			
+
 			& span {
 				font-weight: 700;
 				filter: invert(100%);
@@ -664,7 +700,7 @@ section {
 	from {
 		scale: 0;
 	}
-	
+
 	to {
 		scale: 1;
 	}
@@ -705,7 +741,8 @@ footer {
 	display: grid;
 	place-content: center;
 	padding-block: 1rem;
-	background-color: #94B17E;
+	background-color: #68a33a;
+
 	& a {
 		--active: 1;
 
