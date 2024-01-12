@@ -1,5 +1,5 @@
 :root {
-	--text-color: hsl(0, 0%, 0%);
+	--commandments-color: hsl(0, 0%, 0%);
 
 	/* header */
 	--header-bg: #94B17E;
@@ -36,10 +36,10 @@ body {
 
 	/* scope */
 	timeline-scope: 
-		--masthead-s, 
+		--pepegods-s, 
 		--tiles-s, 
-		--text-s, 
-		--two-columns-s,
+		--commandments-s, 
+		--manifesto-s,
 		--subscribe-s;
 }
 
@@ -136,7 +136,7 @@ header {
 				position: relative;
 				padding: 0.5rem 1rem;
 				text-transform: uppercase;
-				color: var(--text-color);
+				color: var(--commandments-color);
 				transition: transform 0.25s var(--cubic);
 
 				&::after {
@@ -292,7 +292,7 @@ section {
 	}
 }
 
-.masthead {
+.pepegods {
 	max-inline-size: 100vw;
 	block-size: 100vh;
 	overflow: hidden;
@@ -401,7 +401,7 @@ section {
 	}
 }
 
-.text {
+.commandments {
 	max-inline-size: 80ch;
 	margin-inline: auto;
 	padding: 3rem 1rem;
@@ -412,7 +412,7 @@ section {
 		counter-increment: chapter 1;
 
 		/* animation */
-		animation: show-text both linear;
+		animation: show-commandments both linear;
 		animation-timeline: view(y 80vh auto);
 
 		&::before {
@@ -421,7 +421,7 @@ section {
 	}
 }
 
-/* :has(.text) {
+/* :has(.commandments) {
 	counter-reset: chapter 0;
 	
 	& p {
@@ -435,7 +435,7 @@ section {
 	}
 } */
 
-@keyframes show-text {
+@keyframes show-commandments {
 	from {
 		opacity: 0;
 	}
@@ -468,7 +468,7 @@ section {
 	transition: opacity 200ms linear;
 
 	/* animation */
-	animation: read-text both linear;
+	animation: read-commandments both linear;
 	animation-timeline: var(--name);
 	animation-range: entry 100% exit 100%;
 
@@ -477,7 +477,7 @@ section {
 	}
 }
 
-@keyframes read-text {
+@keyframes read-commandments {
 	1% {
 		opacity: 1;
 	}
@@ -492,7 +492,7 @@ section {
 	}
 }
 
-.two-columns {
+.manifesto {
 	--columns: 1;
 	--translateX: 0;
 	max-inline-size: 80ch;
@@ -513,7 +513,7 @@ section {
 			justify-content: space-between;
 
 			.card {
-				box-shadow: inset 0 0 0.125rem var(--text-color);
+				box-shadow: inset 0 0 0.125rem var(--commandments-color);
 
 				/* animation */
 				animation: show both linear;
@@ -574,7 +574,7 @@ section {
 }
 
 @media (width >= 48rem) {
-	.two-columns {
+	.manifesto {
 		--columns: 2;
 		--translateX: 150%;
 
@@ -634,7 +634,7 @@ section {
 			margin-block-end: 1rem;
 			padding-inline: 0.5rem;
 			font-size: calc(1rem + 0.25vw);
-			box-shadow: 0 0 0.125rem var(--text-color);
+			box-shadow: 0 0 0.125rem var(--commandments-color);
 			
 			&:focus {
 				outline: thin solid var(--purple);
