@@ -1,19 +1,19 @@
 :root {
-	--text-color: hsl(240, 2%, 66%);
+	--text-color: hsl(0, 0%, 0%);
 
 	/* header */
-	--header-bg: #000000;
+	--header-bg: #94B17E;
 
 	/* section */
-	--section: #ffffff;
-	--section-even: hsl(210deg 15% 92%);
+	--section: #94B17E;
+	--section-even: #94B17E;
 
 	/* tiles */
-	--red: #00FFA3;
+	--red: #45f78f;
 	--green: #03E1FF;
 	--blue: #03E1FF;
 	--purple: #DC1FFF;
-	--yellow: hsl(303, 100%, 73%);
+	--yellow: hsl(0, 100%, 73%);
 	--black: hsl(0 0% 0%);
 
 	/*  */
@@ -495,7 +495,6 @@ section {
 .two-columns {
 	--columns: 1;
 	--translateX: 0;
-
 	max-inline-size: 80ch;
 	margin-inline: auto;
 	block-size: 100%;
