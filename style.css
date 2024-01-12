@@ -705,7 +705,7 @@ footer {
 	display: grid;
 	place-content: center;
 	padding-block: 1rem;
-
+	background-color: #94B17E;
 	& a {
 		--active: 1;
 
